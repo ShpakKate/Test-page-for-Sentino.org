@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  margin: 2rem 15%;
+}
+
+.textField {
+  height: 8rem;
+  max-width: 60rem;
+  width: 100%;
+  border-color: #898C7D;
+
+  &:focus {
+    outline: none;
+    border-color: #719ECE !important;
+    border: 0.1rem solid;
+    box-shadow: 0 0 0.15rem #719ECE;
+  }
+}
+
+.postBtn {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #337ab7;
+  border-radius: 0.15rem;
+  border: #2e6da4;
+  color: #fff;
+  font-size: 0.7rem;
+
+  &[disabled] {
+    opacity: 0.65;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="wrapper">
+    <form [formGroup]="form">
+      <textarea class="textField" formControlName="text" placeholder="Your text..."></textarea>
+      <button class="postBtn" type="button" [disabled]="form.invalid" (click)="setData()">Send</button>
+    </form>
+    <div *ngIf="response">
+      <p>{{response | json}}</p>
+    </div>
+  </div>
+
+</div>
+
