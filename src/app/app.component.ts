@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserInfoService} from "./shared/services/user-info.service";
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,12 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
 
+  textOfUser: string | undefined;
   response: any;
   form!: FormGroup;
   text = new FormControl('', [Validators.minLength(5)]);
-  url = 'https://api.sentino.org/api/score/text';
-  headers =  new HttpHeaders()
-    .set('Authorization', 'Token sentino_api_token' )
 
-  constructor(private http: HttpClient) {}
+  constructor(private userInfoService: UserInfoService) {}
 
   ngOnInit() {
         this.form = new FormGroup({
@@ -25,13 +23,16 @@ export class AppComponent implements OnInit {
   }
 
   setData() {
-    console.log(this.form.value)
-
-    return this.http.post(this.url, {text: this.form.value}, {headers: this.headers})
-      .subscribe(response => {
-        this.response = response;
-        console.log(this.response);
-      }
+    this.userInfoService.postData({
+      text: this.text.value as string,
+      inventories: ['big5', 'neo']
+    })
+      .subscribe((data) => {
+        this.response = data;
+        this.textOfUser = this.response.text;
+        },
+        error => console.log(error)
     )
+    this.form.reset();
   }
 }

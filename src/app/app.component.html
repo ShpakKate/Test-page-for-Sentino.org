@@ -4,10 +4,8 @@
       <textarea class="textField" formControlName="text" placeholder="Your text..."></textarea>
       <button class="postBtn" type="button" [disabled]="form.invalid" (click)="setData()">Send</button>
     </form>
-    <div *ngIf="response">
-      <p>{{response | json}}</p>
+    <div class="response" *ngIf="response">Response from the server:
+      <p>{{textOfUser}}</p>
     </div>
   </div>
-
 </div>
-
