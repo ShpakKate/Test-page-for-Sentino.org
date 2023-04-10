@@ -15,7 +15,7 @@ export class UserInfoService {
   constructor(private  http: HttpClient) {
   }
 
-  postData(postText: {text: string, inventories: string[]}): Observable<any> {
+  postData(postText: Text): Observable<any> {
     return this.http.post<Text>(this.url, postText, {headers: this.headers})
   }
 }
