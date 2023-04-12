@@ -15,6 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   subscription?: Subscription | null;
   text = new FormControl('', [Validators.minLength(5)]);
+  big5 = [];
+  neo = [];
 
   constructor(private userInfoService: UserInfoService) {}
 
@@ -31,7 +33,10 @@ export class AppComponent implements OnInit, OnDestroy {
     })
       .subscribe((data) => {
         this.response = data;
+        this.big5 = this.response.scoring.big5;
+        this.neo = this.response.scoring.neo;
         this.textOfUser = this.response.text;
+          console.log(this.big5, this.neo)
         },
         error => console.log(error)
     )

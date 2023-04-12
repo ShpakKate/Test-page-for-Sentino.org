@@ -5,7 +5,7 @@
       <button class="postBtn" type="button" [disabled]="form.invalid" (click)="setData()">Send</button>
     </form>
     <div class="response" *ngIf="response">Response from the server:
-      <p>{{textOfUser}}</p>
+      <pre>{{response | json}}</pre>
     </div>
   </div>
 </div>
