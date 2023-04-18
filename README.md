@@ -1,3 +1,5 @@
+To get the result, you need to enter a token.
+
 # TestSentino
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
