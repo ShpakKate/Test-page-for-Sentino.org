@@ -1,5 +1,7 @@
 <div class="container">
   <div class="wrapper">
+    <p>Enter the token to get the result:</p>
+    <textarea class="inputField" [(ngModel)]="token" placeholder="Your token..."></textarea>
     <form [formGroup]="form">
       <textarea class="textField" formControlName="text" placeholder="Your text..."></textarea>
       <button class="postBtn" type="button" [disabled]="form.invalid" (click)="setData()">Send</button>

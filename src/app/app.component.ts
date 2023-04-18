@@ -15,31 +15,33 @@ export class AppComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   subscription?: Subscription | null;
   text = new FormControl('', [Validators.minLength(5)]);
+  token: string = '';
   big5 = [];
   neo = [];
 
   constructor(private userInfoService: UserInfoService) {}
 
   ngOnInit() {
-        this.form = new FormGroup({
-          text: this.text
-        });
+    this.form = new FormGroup({
+      text: this.text
+    });
   }
 
   setData() {
     this.subscription = this.userInfoService.postData({
       text: this.text.value as string,
       inventories: ['big5', 'neo']
-    })
+    }, this.token)
       .subscribe((data) => {
-        this.response = data;
-        this.big5 = this.response.scoring.big5;
-        this.neo = this.response.scoring.neo;
-        this.textOfUser = this.response.text;
+          this.response = data;
+          this.big5 = this.response.scoring.big5;
+          this.neo = this.response.scoring.neo;
+          this.textOfUser = this.response.text;
           console.log(this.big5, this.neo)
         },
         error => console.log(error)
-    )
+      )
+    console.log(this.token)
     this.form.reset();
   }
 

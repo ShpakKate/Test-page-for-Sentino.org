@@ -1,3 +1,13 @@
+@mixin fieldInFocus {
+  outline: none;
+  border-color: $borderColorForTextareaInFocus;
+  border: 0.1rem solid;
+  box-shadow: 0 0 0.15rem $borderColorForTextareaInFocus;
+}
+
+$borderColorForTextarea: #898C7D;
+$borderColorForTextareaInFocus: #719ECE !important;
+
 .container {
   width: 100%;
 }
@@ -9,14 +19,22 @@
 .textField {
   height: 8rem;
   max-width: 60rem;
+  min-width: 25rem;
   width: 100%;
-  border-color: #898C7D;
+  border-color: $borderColorForTextarea;
 
   &:focus {
-    outline: none;
-    border-color: #719ECE !important;
-    border: 0.1rem solid;
-    box-shadow: 0 0 0.15rem #719ECE;
+    @include fieldInFocus;
+  }
+}
+
+.inputField {
+  height: 1rem;
+  min-width: 25rem;
+  border-color: $borderColorForTextarea;
+
+  &:focus {
+    @include fieldInFocus;
   }
 }
 

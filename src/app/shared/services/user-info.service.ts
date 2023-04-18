@@ -9,13 +9,16 @@ import {Text} from "../model/text"
 export class UserInfoService {
 
   url = 'https://api.sentino.org/api/score/text';
-  headers =  new HttpHeaders()
-    .set('Authorization', 'Token da8c25e5008915ed1f14ce340bb2f7f4e5566295' );
 
   constructor(private  http: HttpClient) {
   }
 
-  postData(postText: Text): Observable<any> {
-    return this.http.post<Text>(this.url, postText, {headers: this.headers})
+  postData(postText: Text, token: string): Observable<any> {
+    console.log(token);
+    return this.http.post<Text>(
+      this.url,
+      postText,
+      {headers:  new HttpHeaders().set('Authorization', token)}
+    )
   }
 }
